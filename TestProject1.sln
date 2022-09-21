@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HudlClientTest", "HudlClientTest.csproj", "{150449A1-20BF-4994-A0AE-B759E38948E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55DE07A7-E3A1-4053-A5FF-18B51AA69947} = {55DE07A7-E3A1-4053-A5FF-18B51AA69947}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HudlTestFrameworks", "..\HudlTestFrameworks\HudlTestFrameworks.csproj", "{55DE07A7-E3A1-4053-A5FF-18B51AA69947}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{150449A1-20BF-4994-A0AE-B759E38948E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{150449A1-20BF-4994-A0AE-B759E38948E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{150449A1-20BF-4994-A0AE-B759E38948E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{150449A1-20BF-4994-A0AE-B759E38948E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55DE07A7-E3A1-4053-A5FF-18B51AA69947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55DE07A7-E3A1-4053-A5FF-18B51AA69947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55DE07A7-E3A1-4053-A5FF-18B51AA69947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55DE07A7-E3A1-4053-A5FF-18B51AA69947}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE12D298-F35B-460F-A923-8DD23E82C426}
+	EndGlobalSection
+EndGlobal
