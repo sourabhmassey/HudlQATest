@@ -7,7 +7,7 @@ HudlClientTests is a collection of tests for the landing page and login page.
 
 I had limited time today due to back to back meetings and then a security issue that had me copy the whole solution manually from my work laptop to personal. That led to the .Net core 6 imcompatibilty issues with .net framework 4.8.1, otherwise i would have added more scenarios. 
 
-load the project with TestProject1.snl and build it, you might have to install the selenium and nunit drivers if not prompted automaticaly.
+load the project with HudlQATest.sln and build it, you might have to install the selenium and nunit drivers if not prompted automaticaly.
 
 I have implemented the Page object model and tried to keep the Tests as lite as possible.
 
