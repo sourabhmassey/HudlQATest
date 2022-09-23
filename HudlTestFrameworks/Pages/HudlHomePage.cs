@@ -1,6 +1,7 @@
-﻿using HudlTestFrameworks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using SeleniumExtras.WaitHelpers;
+using System;
 
 namespace HudlTestFrameworks.Pages
 {
@@ -12,17 +13,25 @@ namespace HudlTestFrameworks.Pages
         [FindsBy(How = How.XPath, Using = "//*[@id=\"ssr-webnav\"]/div/div[1]/nav[1]/div[4]/div[2]/div[2]/div[3]/a")]
         private IWebElement LogoutOption;
 
-        public bool CheckTitle() => Browser.Title.Equals("Home - Hudl");
+        public bool CheckTitle(Browser browser) {
+            browser.fluentWait.PollingInterval = TimeSpan.FromMilliseconds(250);
 
-        private void ClickProfileLogo() 
-        {
-            if (ProfileLogo.Displayed && ProfileLogo.Enabled) {
-                ProfileLogo.Click();
-            }      
+            try {
+                browser.fluentWait.Until(ExpectedConditions.TitleContains("Home - Hudl"));
+            }
+            catch {
+                Console.WriteLine("[Info] Title not displayed in the timelimit");
+            }
+                return Browser.Title.Equals("Home - Hudl");
         }
 
-        public void PerformLogout() 
-        {
+        private void ClickProfileLogo() {
+            if (ProfileLogo.Displayed && ProfileLogo.Enabled) {
+                ProfileLogo.Click();
+            }
+        }
+
+        public void PerformLogout() {
             ClickProfileLogo();
             LogoutOption.Click();
         }

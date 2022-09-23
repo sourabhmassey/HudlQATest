@@ -7,7 +7,7 @@ namespace HudlTestFrameworks.Pages
     {
         private static T GetPage<T>() where T : new() {
             var page = new T();
-            IWebDriver driver = Browser.WebDriver;//._Driver;
+            IWebDriver driver = Browser._Driver;
             PageFactory.InitElements(driver, page);
             return page;
         }

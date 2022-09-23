@@ -1,42 +1,37 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace HudlTestFrameworks
 {
     public class Browser
     {
         private static IWebDriver webDriver;
-
-        private static string baseUrl = "https://www.hudl.com";
-        // private IWebDriver webDriver = new ChromeDriver();
-
-        public Browser(WebDriver driver) 
+        private static string baseUrl = "https://www.hudl.com/";
+        public DefaultWait<IWebDriver> fluentWait;
+        
+        public Browser() 
         {
-            driver = new ChromeDriver("C:\\Users\\sourabh\\.nuget\\packages\\selenium.chrome.webdriver\\85.0.0\\driver\\chromedriver.exe");
-            driver.Manage().Window.Maximize();
-            WebDriver = driver;
+            webDriver = new ChromeDriver();
+            webDriver.Manage().Window.Maximize();
+            fluentWait = new DefaultWait<IWebDriver>(webDriver);
         }
 
-        public static void Initialize() 
-        {
+        public static void Initialize() {
             NavigateTo("");
         }
 
-        public static string Title => WebDriver.Title;
-        public static string CurrentURL => WebDriver.Url;
+        public static string Title => webDriver.Title;
+        public static string CurrentURL => webDriver.Url;
 
-        public static IWebDriver WebDriver { get => webDriver; set => webDriver = value; }
+        public static IWebDriver _Driver => webDriver;
 
-        // public static IWebDriver _Driver => WebDriver;
-        public static void NavigateTo(string url)
-        {
-           // WebDriver.Url = baseUrl + url; //.Url triggers the url in the current window
-            WebDriver.Navigate().GoToUrl(baseUrl);
+        public static void NavigateTo(string url) {
+             webDriver.Url = (baseUrl + url);
         }
-       
-        public static void Close()
-        {
-            WebDriver.Close();
+
+        public static void Close() {
+            webDriver.Close();
         }
     }
 }

@@ -1,23 +1,23 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Core;
+using NUnit.Framework;
 
 namespace HudlTestFrameworks
 {
     [TestFixture]
     public class SeleniumBase
     {
-        [TestFixtureSetUp]
-        public static void Initialize() {
+        public static Browser browser;
+
+        [SetUp]
+        public static void SetUp()
+        {
+            browser = new Browser();
             Browser.Initialize();
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public static void TestFixtureTearDown() {
             Browser.Close();
-        }
-
-        [TearDown]
-        public static void TearDown() {
-
         }
     }
 }

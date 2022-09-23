@@ -1,48 +1,42 @@
 ﻿using OpenQA.Selenium;
+using SeleniumExtras.WaitHelpers;
 using SeleniumExtras.PageObjects;
-
+using System;
 
 namespace HudlTestFrameworks.Pages
 {
     public class LoginPage
     {
-        private IWebDriver driver;
-
-        [FindsBy(How = How.ClassName, Using = "uni-link uni-link--wrapper styles_hudlLogoContainer_1L8Lig-sH69T84pB_fXSlv styles_fadeInUpFast_13tTIPxY77Mkw_Ud-lEwlP")]
-        private IWebElement companyLogo;
-
+        private bool isDisplayed;
         [FindsBy(How = How.XPath, Using = "//*[@id=\"app\"]/section/div[2]/div/form/div/div[1]/label")]
         private IWebElement emailLabel;
 
         [FindsBy(How = How.XPath, Using = "//*[@id=\"email\"]")]
-        private IWebElement emailTextBox;
+        public IWebElement emailTextBox;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"app\"]/section/div[2]/div/form/div/div[2]/label")] 
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"app\"]/section/div[2]/div/form/div/div[2]/label")]
         private IWebElement passwordLabel;
 
         [FindsBy(How = How.Id, Using = "password")]
-        private IWebElement passwordTextBox;
+        public IWebElement passwordTextBox;
 
-        [FindsBy(How = How.Id, Using = "login-btn")]
-        private IWebElement loginButton;
+        [FindsBy(How = How.Id, Using = "logIn")]
+        public IWebElement loginButton;
 
-        [FindsBy(How = How.Id, Using = "remember-me-checkbox-label")]
-        private IWebElement rememberMeLabel;
+        [FindsBy(How = How.CssSelector, Using = ".uni-form__label--check")]
+        public IWebElement rememberMeLabel;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"app\"]/section/div[2]/div/form/div/div[4]/div/label/svg/rect[1]")]
-        private IWebElement rememberMecheckBox;
+        [FindsBy(How = How.CssSelector, Using = ".uni-form__check-indicator__background")]
+        public IWebElement rememberMecheckBox;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"app\"]/section/div[2]/div/form/div/div[3]/div")]
+        [FindsBy(How = How.CssSelector, Using = ".styles_errorDisplayInnerContainer_3R2ni-zSvPIKWfKXiviJhH")]
         private IWebElement loginErrorMessage;
 
-        public bool CheckTitle() {
-            return Browser.Title.Contains("Log In");
-        }
+        public bool CheckTitle => Browser.Title.Contains("Log In");
 
-        public void RememberMeCkBox() {
+        public void SelectRememberMeCkBox() {
             rememberMecheckBox.Click();
         }
-
 
         private void ClearLoginFields() {
             emailTextBox.Clear();
@@ -61,11 +55,22 @@ namespace HudlTestFrameworks.Pages
         }
 
         public bool checkPasswordTextBox() {
-            return emailLabel.Text.Equals("Password") && passwordTextBox.Enabled.Equals(true);
+            return passwordLabel.Text.Equals("Password") && passwordTextBox.Enabled.Equals(true);
         }
 
-        public bool confirmLoginError() {
-            return loginErrorMessage.Displayed;
+        public bool confirmLoginError(Browser browser) {
+
+            browser.fluentWait.PollingInterval = TimeSpan.FromMilliseconds(250);
+
+            try {
+                browser.fluentWait.Until(ExpectedConditions.ElementToBeClickable(loginErrorMessage));
+                isDisplayed = loginErrorMessage.Displayed;
+            }
+            catch (Exception e) {
+
+                Console.WriteLine("[Info] Login Error Element not Displayed \n\n"+e);
+            }
+            return isDisplayed;
         }
     }
 }
