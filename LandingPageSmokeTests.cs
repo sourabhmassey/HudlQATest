@@ -1,5 +1,5 @@
 using HudlTestFrameworks;
-using HudlTestFrameworks.PageObjects;
+using HudlTestFrameworks.Pages;
 using NUnit.Framework;
 
 
@@ -9,24 +9,40 @@ namespace HudlClientTest
     {
         [Test]
         public void IsHomePageLoding() {
-            Pages.IntroLanding.NavigateTo("/");
+            Pages.IntroLanding.NavigateTo("");
             Assert.IsTrue(Pages.IntroLanding.Title.Contains("Hudl • Connected solutions"));
         }
 
         [Test]
         public void IsNavBarVisible() {
-            Pages.IntroLanding.NavigateTo("/");
+            Pages.IntroLanding.NavigateTo("");
             Assert.IsTrue(Pages.NavBar.navBar.Displayed);
         }
 
         [Test]
-        public void IsNavBarClickable() {
-            Pages.IntroLanding.NavigateTo("/");
-            Assert.IsTrue(Pages.NavBar.solutionsLink.Enabled);
-            Pages.NavBar.clickSolutionsLink();
+        public void IsSolutionsLinkClickable() {
+            Pages.IntroLanding.NavigateTo("");
+            Assert.IsTrue(Pages.IntroLanding.solutionsLink.Enabled);
         }
 
-        /* These are just a few scenarios that are covered here .. there can be at least 50 more scenarios added
-         * to the home page tests*/
+        [Test]
+        public void IsSolutionsTabDisplayed() {
+            Pages.IntroLanding.NavigateTo("");
+            Pages.IntroLanding.clickSolutionsLink(browser);
+            Assert.IsTrue(Pages.IntroLanding.VerifySolutionsMenu(browser));
+        }
+
+        [Test]
+        public void IsProductsLinkClickable() {
+            Pages.IntroLanding.NavigateTo("");
+            Assert.IsTrue(Pages.IntroLanding.productsLink.Enabled);
+        }
+
+        [Test]
+        public void IsProductsTabDisplayed() {
+            Pages.IntroLanding.NavigateTo("");
+            Pages.IntroLanding.clickProductLink(browser);
+            Assert.IsTrue(Pages.IntroLanding.VerifyProductsMenu(browser));
+        }
     }
 }
