@@ -29,10 +29,10 @@ jobs:
         run: echo "$env:GITHUB_WORKSPACE"
 
       - name: Restore Packages
-        run: nuget restore scr\HudlQATest\HudlQATest.csproj
+        run: nuget restore ".\HudlQATest\HudlQATest.sln"
         
       - name: Restore Packages
-        run: nuget restore scr\HudlQATest\HudlTestFrameworks\HudlTestFrameworks.csproj
+        run: nuget restore ".\HudlQATest\HudlTestFrameworks\HudlTestFrameworks.sln"
 
       - name: Build Solution
         run: |
