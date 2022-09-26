@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2019
+    runs-on: windows-latest
 
     steps:
         
@@ -25,13 +25,13 @@ jobs:
       - name: Navigate to Workspace
         run: |
           cd $GITHUB_WORKSPACE
-          echo $GITHUB_WORKSPACE
+          echo "$GITHUB_WORKSPACE"
 
       - name: Restore Packages
-        run: nuget restore "../HudlQATest/HudlQATest.csproj"
+        run: nuget restore '../HudlQATest/HudlQATest.csproj
         
       - name: Restore Packages
-        run: nuget restore "../HudlQATest/HudlTestFrameworks/HudlTestFrameworks.csproj"
+        run: nuget restore '../HudlQATest/HudlTestFrameworks/HudlTestFrameworks.csproj'
 
       - name: Build Solution
         run: |
