@@ -23,10 +23,10 @@ jobs:
         uses: darenm/Setup-VSTest@v1
 
       - name: Restore Packages
-        run: nuget restore HudlQATest/HudlQATest.sln
+        run: nuget restore "HudlQATest/HudlQATest.sln"
         
       - name: Restore Packages
-        run: nuget restore HudlTestFrameworks/HudlTestFrameworks.sln
+        run: nuget restore "HudlTestFrameworks/HudlTestFrameworks.sln"
 
       - name: Build Solution
         run: |
