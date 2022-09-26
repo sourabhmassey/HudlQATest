@@ -26,10 +26,10 @@ jobs:
         run: cd $GITHUB_WORKSPACE
 
       - name: Restore Packages
-        run: nuget restore HudlQATest.sln
+        run: nuget restore "./../HudlQATest.sln"
         
       - name: Restore Packages
-        run: nuget restore HudlTestFrameworks.sln
+        run: nuget restore "./../../HudlTestFrameworks.sln"
 
       - name: Build Solution
         run: |
@@ -40,4 +40,4 @@ jobs:
           msbuild.exe HudlTestFrameworks.sln /p:platform="Any CPU" /p:configuration="Release"
         
       - name: Run Tests
-        run: vstest.console.exe .\HudlQATest\bin\Debug\net48\HudlClientTest.dll
+        run: vstest.console.exe ".\HudlQATest\bin\Debug\net48\HudlClientTest.dll"
