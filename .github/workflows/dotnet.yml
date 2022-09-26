@@ -19,10 +19,12 @@ jobs:
         dotnet-version: 6.0.x
     
     - name: Restore dependencies
-      run: dotnet restore "../HudlQATest/HudlQATest/HudlClientTest.csproj", "../HudlQATest/HudlTestFrameworks/HudlTestFrameworks.csproj"
+      run: dotnet restore "../HudlQATest/HudlQATest/HudlClientTest.csproj"
+    - name: Restore dependencies
+      run: dotnet restore "../HudlQATest/HudlTestFrameworks/HudlTestFrameworks.csproj"
     
     - name: Build
       run: dotnet build --no-restore
-    
+      
     - name: Test
       run: dotnet test
