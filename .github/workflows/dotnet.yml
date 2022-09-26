@@ -20,11 +20,13 @@ jobs:
     
     - name: Restore dependencies
       run: dotnet restore "HudlQATest/HudlQATest.sln"
-        dotnet restore "HudlTestFrameworks/HudlTestFrameworks.sln"
+    - name: Restore dependencies
+      run: dotnet restore "HudlTestFrameworks/HudlTestFrameworks.sln"
         
     - name: Build
       run: dotnet build "/HudlQATest/HudlQATest.sln"
-        dotnet build "HudlTestFrameworks/HudlTestFrameworks.sln"
+    - name: Build
+      run: dotnet builddotnet build "HudlTestFrameworks/HudlTestFrameworks.sln"
       
     - name: Test
       run: dotnet test 
