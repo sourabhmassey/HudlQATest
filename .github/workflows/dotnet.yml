@@ -26,13 +26,13 @@ jobs:
         run: cd $GITHUB_WORKSPACE
         
       - name: Print workspace 
-        run: echo $GITHUB_WORKSPACE
+        run: echo "$env:GITHUB_WORKSPACE"
 
       - name: Restore Packages
-        run: nuget restore ../HudlQATest/HudlQATest.csproj
+        run: nuget restore scr\HudlQATest\HudlQATest.csproj
         
       - name: Restore Packages
-        run: nuget restore ../HudlQATest/HudlTestFrameworks/HudlTestFrameworks.csproj
+        run: nuget restore scr\HudlQATest\HudlTestFrameworks\HudlTestFrameworks.csproj
 
       - name: Build Solution
         run: |
