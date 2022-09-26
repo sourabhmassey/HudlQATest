@@ -29,7 +29,7 @@ jobs:
         run: echo "$env:GITHUB_WORKSPACE"
 
       - name: Restore Packages
-        run: nuget restore HudlQATest.sln
+        run: nuget restore HudlClientTest.csproj
         
       - name: Restore Packages
         run: |
