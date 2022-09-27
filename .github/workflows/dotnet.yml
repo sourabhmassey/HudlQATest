@@ -30,8 +30,8 @@ jobs:
 
       - name: Restore Packages
         run: |
-          nuget restore source "https://api.nuget.org/v3/index.json"
-          nuget restore "..\HudlQATest\HudlClientTest.csproj"
+          nuget restore -Source "https://api.nuget.org/v3/index.json"
+          nuget restore HudlClientTest.csproj
         
       - name: Restore Packages
         run: |
