@@ -23,8 +23,9 @@ jobs:
         uses: darenm/Setup-VSTest@v1
         
       - name: Print workspace 
-        run: | 
-          # echo "$env:GITHUB_WORKSPACE"
-          ls
+        run:  ls
 
-     
+      - name: Build Solution
+        run: |
+          cd $GITHUB_WORKSPACE
+          msbuild.exe HudlQATest.sln /p:platform="Any CPU" /p:configuration="Release"
