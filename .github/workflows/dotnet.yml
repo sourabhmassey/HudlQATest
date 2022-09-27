@@ -28,6 +28,6 @@ jobs:
       - name: Print workspace 
         run: | 
           echo "$env:GITHUB_WORKSPACE"
-          dir
+          ls -r
 
      
