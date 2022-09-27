@@ -29,7 +29,9 @@ jobs:
         run: echo "$env:GITHUB_WORKSPACE"
 
       - name: Restore Packages
-        run: nuget restore "../HudlQATest/HudlClientTest.csproj"
+        run: |
+          nuget restore source "https://api.nuget.org/v3/index.json"
+          nuget restore "..\HudlQATest\HudlClientTest.csproj"
         
       - name: Restore Packages
         run: |
