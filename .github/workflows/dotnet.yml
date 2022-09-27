@@ -26,28 +26,8 @@ jobs:
         run: cd $GITHUB_WORKSPACE
         
       - name: Print workspace 
-        run: echo "$env:GITHUB_WORKSPACE"
+        run: | 
+          echo "$env:GITHUB_WORKSPACE"
+          dir
 
-      - name: Restore Packages
-        run: |
-          nuget restore
-          msbuild HudlClientTest.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
-        
-      - name: Restore Packages
-        run: |
-          cd ..
-          cd HudlTestFrameworks
-          nuget restore
-          msbuild HudlTestFrameworks.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
-
-      - name: Build Solution
-        run: |
-          cd $GITHUB_WORKSPACE
-          msbuild.exe HudlQATest.sln /p:platform="Any CPU" /p:configuration="Release"
-          
-      - name: Build Solution
-        run: |
-          msbuild.exe HudlTestFrameworks.sln /p:platform="Any CPU" /p:configuration="Release"
-        
-      - name: Run Tests
-        run: vstest.console.exe ".\HudlQATest\bin\Debug\net48\HudlClientTest.dll"
+     
