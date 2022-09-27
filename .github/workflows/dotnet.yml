@@ -30,14 +30,15 @@ jobs:
 
       - name: Restore Packages
         run: |
-          nuget restore -Source "https://api.nuget.org/v3/index.json"
-          nuget restore HudlClientTest.csproj
+          nuget restore
+          msbuild HudlClientTest.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
       - name: Restore Packages
         run: |
           cd ..
           cd HudlTestFrameworks
-          nuget restore "../HudlQATest/HudlTestFrameworks/HudlTestFrameworks.sln"
+          nuget restore
+          msbuild HudlTestFrameworks.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
 
       - name: Build Solution
         run: |
