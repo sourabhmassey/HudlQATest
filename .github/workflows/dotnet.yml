@@ -29,13 +29,13 @@ jobs:
         run: echo "$env:GITHUB_WORKSPACE"
 
       - name: Restore Packages
-        run: nuget restore HudlClientTest.sln
+        run: nuget restore "../HudlQATest/HudlClientTest.csproj"
         
       - name: Restore Packages
         run: |
           cd ..
           cd HudlTestFrameworks
-          nuget HudlTestFrameworks.sln
+          nuget restore "../HudlQATest/HudlTestFrameworks/HudlTestFrameworks.sln"
 
       - name: Build Solution
         run: |
